@@ -20,6 +20,10 @@
   --danger: #a3341f;
   --danger-soft: #f6e0d8;
   --overlay: rgb(29 27 22 / 0.28);
+  --inset: #f4f1ea;
+  --focus: var(--accent-soft);
+  --nav-active: var(--surface);
+  --knob: #fff;
   --shadow-pop: 0 1px 2px rgb(29 27 22 / 0.06), 0 8px 24px -6px rgb(29 27 22 / 0.18);
 
   --font-ui: "IBM Plex Sans", system-ui, sans-serif;
@@ -34,27 +38,32 @@
 }
 
 @media (prefers-color-scheme: dark) {
+  /* Capas de más oscura a más clara: fondo < superficie < paneles internos < burbujas y hover. */
   :root {
-    --bg: #161512;
-    --bg-sunken: #100f0d;
-    --surface: #1d1c18;
-    --ink: #ece7dc;
-    --ink-2: #c6bfb0;
-    --muted: #9a9382;
-    --line: #2f2d27;
-    --line-strong: #47433a;
-    --accent: #84bba7;
-    --accent-hover: #9accb9;
-    --accent-ink: #0f1d18;
-    --accent-soft: #1f2f29;
-    --doc: #9cb6cf;
-    --doc-soft: #1d2631;
-    --memory: #dcae62;
-    --memory-soft: #2e2619;
-    --danger: #e68a73;
-    --danger-soft: #36211b;
-    --overlay: rgb(0 0 0 / 0.5);
-    --shadow-pop: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px -8px rgb(0 0 0 / 0.6);
+    --bg: #131210;
+    --surface: #1a1916;
+    --inset: #22211d;
+    --bg-sunken: #2a2924;
+    --ink: #ede8de;
+    --ink-2: #cbc4b5;
+    --muted: #9e9787;
+    --line: #2d2b26;
+    --line-strong: #46433b;
+    --accent: #8ccab3;
+    --accent-hover: #a7dac6;
+    --accent-ink: #0c1a15;
+    --accent-soft: rgb(140 202 179 / 0.14);
+    --focus: rgb(140 202 179 / 0.32);
+    --nav-active: #23221e;
+    --knob: #f3efe6;
+    --doc: #adc6df;
+    --doc-soft: rgb(122 164 210 / 0.16);
+    --memory: #e6b96f;
+    --memory-soft: rgb(230 185 111 / 0.14);
+    --danger: #f0937c;
+    --danger-soft: rgb(240 147 124 / 0.13);
+    --overlay: rgb(0 0 0 / 0.55);
+    --shadow-pop: 0 0 0 1px #34322c, 0 18px 40px -12px rgb(0 0 0 / 0.75);
     color-scheme: dark;
   }
 }
@@ -169,6 +178,13 @@ select {
   cursor: not-allowed;
 }
 
+.btn-primary:disabled {
+  opacity: 1;
+  background: var(--bg-sunken);
+  border-color: var(--line-strong);
+  color: var(--muted);
+}
+
 .btn-primary {
   background: var(--accent);
   border-color: var(--accent);
@@ -276,7 +292,7 @@ select {
 .textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--focus);
 }
 
 .select {
@@ -340,7 +356,8 @@ select {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--knob);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
   transition: transform 150ms var(--ease);
 }
 
@@ -575,7 +592,7 @@ select {
 }
 
 .project-link.active {
-  background: var(--surface);
+  background: var(--nav-active);
   color: var(--ink);
   box-shadow: inset 0 0 0 1px var(--line);
 }
@@ -1009,7 +1026,7 @@ select {
   margin: 0;
   padding: 10px 12px;
   border-radius: var(--r);
-  background: var(--bg);
+  background: var(--inset);
   font-size: 13.5px;
   color: var(--ink-2);
   white-space: pre-wrap;
@@ -1105,7 +1122,7 @@ select {
 
 .composer:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
+  box-shadow: 0 0 0 3px var(--focus);
 }
 
 .composer textarea {
@@ -1328,7 +1345,7 @@ select {
   padding: 18px;
   border: 1px dashed var(--line-strong);
   border-radius: var(--r);
-  background: var(--bg);
+  background: var(--inset);
   cursor: pointer;
   text-align: left;
   transition:
@@ -1429,7 +1446,7 @@ select {
   grid-column: 1 / -1;
   padding: 14px 16px;
   border-radius: var(--r);
-  background: var(--bg);
+  background: var(--inset);
 }
 
 .empty {
@@ -1636,7 +1653,7 @@ select {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--r);
-  background: var(--bg);
+  background: var(--inset);
 }
 
 .form-stack h2 {
@@ -1674,7 +1691,7 @@ select {
 }
 
 .home-row:hover {
-  background: var(--bg);
+  background: var(--inset);
 }
 
 .home-row h3 {
