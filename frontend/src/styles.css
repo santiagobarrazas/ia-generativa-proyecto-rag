@@ -825,7 +825,7 @@ select {
   animation: pop 140ms var(--ease);
 }
 
-.menu button {
+.menu > button {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -839,11 +839,11 @@ select {
   cursor: pointer;
 }
 
-.menu button:hover {
+.menu > button:hover {
   background: var(--bg-sunken);
 }
 
-.menu button.danger {
+.menu > button.danger {
   color: var(--danger);
 }
 
